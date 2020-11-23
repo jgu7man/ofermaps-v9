@@ -28,9 +28,21 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/sdesktop.css",
+              "src/assets/css/editor.css",
+              "src/assets/css/ghpages-materialize.css",
+              "node_modules/materialize-css/dist/css/materialize.min.css"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/materialize-css/dist/js/materialize.js",
+              "node_modules/hammerjs/hammer.js",
+              "node_modules/interactjs/dist/interact.js",
+              "src/assets/js/qrcodes/qrcode.js",
+              "src/assets/js/addTouchSupport.js",
+              "src/assets/js/jquery.knob.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -123,6 +135,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "ofermaps-v9"
+    }
+  },
+  "defaultProject": "ofermaps-v9",
+  "cli": {
+    "analytics": "5740bca3-7997-4046-af59-6a73f7a18dee"
+  }
 }
