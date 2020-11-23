@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ofermaps-e462b": {
+      "hosting": {
+        "ofermaps-v9": [
+          "ofermaps-e462b"
+        ]
+      }
+    }
+  }
+}
