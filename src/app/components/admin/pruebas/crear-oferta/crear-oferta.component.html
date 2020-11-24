@@ -187,9 +187,9 @@
             <div class="row" *ngIf="!hasImage">
                 <h5 class="center">Imagen de oferta</h5>
                 <div class="col s6">
-                    <p class="boton btn-secondary" (click)="ofertaPendiente()" style="width: 10em; float: left;">Diseñar</p>
+                    <!-- <p class="boton btn-secondary" (click)="ofertaPendiente()" style="width: 10em; float: left;">Diseñar</p> -->
                 </div>
-                <div class="col s6 file-field input-field">
+                <div class="col s12 file-field input-field">
                     <div class="">
                         <span class="boton btn-secondary upfile" style="float: right; left: 75% !important"> Cargar</span>
                         <input type="file" name="oImagen" id="oImagen" (change)=cargarImg($event) />

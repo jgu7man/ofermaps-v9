@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { AngularFirestore } from '@angular/fire/firestore';
+import {SuscriptorModel} from '../models/suscriptor.model';
 import { EmpresaService } from './empresa.service';
 
 @Injectable({ providedIn: 'root' })
@@ -106,6 +107,23 @@ export class SuscripcionesService{
       .collection('suscriptores').where('uid', '==', uid).get()
     }
     return suscription.empty
+  }
+
+
+
+  async getEmpresaSuscriptores(idEmpresa: string) {
+    
+    var suscriptores: SuscriptorModel[] = []
+    var empresaRef = this.fs.collection(`empresas/${idEmpresa}/suscriptores`).ref
+    var docs = await empresaRef.get()
+    console.log(docs.size);
+    docs.forEach(doc => {
+      console.log(doc.data());
+      let sus:SuscriptorModel = doc.data() as SuscriptorModel
+      sus.date = doc.get('date').toDate()
+      suscriptores.push(sus)
+    })
+    return suscriptores
   }
   
 }

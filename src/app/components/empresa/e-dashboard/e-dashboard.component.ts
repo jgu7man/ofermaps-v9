@@ -50,6 +50,16 @@ export class EDashboardComponent implements OnInit {
     }
   }
 
+
+  actiavtProductos(plan: string) {
+    if (this.empresa.idEmpresa != '') {
+      return true
+    } else
+    if (plan == 'gratis' || plan == 'plus') {
+      return false
+    } else {return true}
+  }
+
   
 
   openMenu() {

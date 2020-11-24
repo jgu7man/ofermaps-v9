@@ -13,14 +13,14 @@
         </div>
     </div>
 
-    <div class="row valign-wrapper">
+    <!-- <div class="row valign-wrapper">
         <div class="col s12 center">
             En este momento nuestros paquetes son gratis
         </div>
-    </div>
+    </div> -->
 
-    <!-- <form class="oferForm" action="#" name="formadepago" #formadepago="ngForm" (ngSubmit)="onSubmit()" method="POST" id="formadepagoform" onsubmit="return false">
-        <h4 class="center-align">Crédito o débito</h4>
+    <!-- <form class="oferForm" action="#" name="formadepago" #formadepago="ngForm" (ngSubmit)="onSubmit()" method="POST" id="formadepagoform" onsubmit="return false"> -->
+        <!-- <h4 class="center-align">Crédito o débito</h4>
         <div class="row">
             <p class="opcionTarjeta" *ngFor="let item of tarjeta">
                 <input type="radio" name="formadepago" [(ngModel)]="forma.formadepago" value="card" id="card" checked />
@@ -34,14 +34,16 @@
                     </div>
                 </label>
             </p>
-        </div>
-        <div class="row">
+        </div> -->
+        <!-- <div class="row">
             <div class="col s12 right">
                 <p [routerLink]="['/empresa/pasarela/regtarjeta']" class="btn-secondary boton">AGREGAR</p>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row">
+        
+
+        <!-- <div class="row">
             <h4 class="center-align">PayPal</h4>
             <p>
                 <input type="radio" name="formadepago" [(ngModel)]="forma.formadepago" id="paypal" value="paypal" />
@@ -61,7 +63,7 @@
             <div class="col s12">
                 <p class="boton btn-secondary">CONECTAR</p>
             </div>
-        </div> -->
-    <!-- </form> -->
+        </div>
+    </form> -->
     <input (click)="onSubmit()" type="submit" value="CONFIRMAR" class="boton btn-primary" id="confirmar" />
 </div>

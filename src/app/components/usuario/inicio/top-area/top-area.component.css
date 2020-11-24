@@ -55,15 +55,10 @@
 
 #viewMode {
     display: inline-block;
-    width: 2em;
     position: fixed;
     right: .25em;
-    background: white;
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
-    top: 1.5em;
+    top: 1em;
     font-size: 1.5em;
-    color: #c13e2d;
-    border-radius: 5px;
     cursor: pointer;
 }
 

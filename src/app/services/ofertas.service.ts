@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { FirebaseApp } from '@angular/fire';
 import { FirebaseFirestore } from '@firebase/firestore-types';
 import { finalize } from 'rxjs/operators';
+import { Location } from '@angular/common';
 
 @Injectable({
     providedIn: 'root'
@@ -22,7 +23,8 @@ export class OfertasService {
     constructor(
         private fs: AngularFirestore,
         private storage: AngularFireStorage,
-        private router: Router
+        private router: Router,
+        private location: Location
     ){
 
     }
@@ -305,6 +307,13 @@ export class OfertasService {
         } else {
             return {status: 'canjeado'}
         }
+    }
+
+
+    async deleteOferta(idOferta) {
+        const oferta = this.fs.collection('ofertas').ref.doc(idOferta)
+        await oferta.delete()
+        this.location.back()
     }
 
 }

@@ -12,6 +12,7 @@ export class VerUbicacionComponent implements OnInit {
   public ubicaciones = []
   public lat
   public long
+  public idEmpresa
   constructor(
     private fs: AngularFirestore,
     private ruta: ActivatedRoute
@@ -19,8 +20,9 @@ export class VerUbicacionComponent implements OnInit {
 
   ngOnInit() {
     this.ruta.params.subscribe(params => {
-      var id = params['idEmpresa']
-      this.fs.collection('ubicaciones').ref.where('idEmpresa', '==', id).get().then(docs => {
+      this.idEmpresa = params['idEmpresa']
+      this.fs.collection('ubicaciones').ref
+        .where('idEmpresa', '==', this.idEmpresa).get().then(docs => {
         
         this.lat = docs.docs[0].data()['lat']
         this.long = docs.docs[0].data()['long']

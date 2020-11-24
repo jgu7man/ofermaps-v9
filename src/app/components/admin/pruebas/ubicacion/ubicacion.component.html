@@ -77,6 +77,8 @@
         <input type="hidden" name="lat" [(ngModel)]="ubicacion.lat" #lat="ngModel" required>
         <input type="hidden" name="long" [(ngModel)]="ubicacion.long" #long="ngModel" required>
 
+        
+
         <input type="submit" name="submit" id="registrarubi" value="GUARDAR" class="boton btn-primary" [disabled]="!ubi.form.valid" />
     </form>
 </div>

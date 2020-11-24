@@ -5,6 +5,24 @@
     background: linear-gradient( -30deg, #c1272d, #c56a3a);
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    color: #c56a3a;
+    position: relative;
+    transition: all .1s ease-out;
+}
+
+.active {
+    border-bottom: 4px solid #000;
+    top: -10px;
+    transform: scale(1.1);
+}
+
+
+.circle-cut {
+    box-shadow: inset 0px -5px 3px rgba(0,0,0,0.5);
+    border-radius: 50%;
+    top: -30px;
+    position: relative;
+    background: #fff;
 }
 
 .icon,

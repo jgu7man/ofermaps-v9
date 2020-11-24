@@ -58,6 +58,7 @@ import { TutorialComponent } from './components/tutorial/tutorial.component';
 import { InicioTutorialComponent } from './components/tutorial/inicio-tutorial/inicio-tutorial.component';
 import { StepComponent } from './components/tutorial/step/step.component';
 import { DirectionMapComponent } from './components/usuario/direction-map/direction-map.component';
+import { TusClientesComponent } from './components/empresa/e-dashboard/tus-clientes/tus-clientes.component';
 
 const routes: Routes = [
   { path: 'uploading', component: UploadingComponent},
@@ -73,13 +74,15 @@ const routes: Routes = [
   { path: "registro", component: RegistMainComponent, children:[
     { path: "empresa", component: PersonalizarComponent },
     { path: "mapa-empresa", component: MapaEmpresaComponent },
-    { path: "ubicacion", component: UbicacionComponent },
+    {path: "ubicacion", component: UbicacionComponent},
+    { path: "ubicacion/:idEmpresa", component: UbicacionComponent },
   ] },
   
   { path: "login", component: LoginComponent },
     
   // { path: "empresa", redirectTo: "/empresa/login", pathMatch: "full" },
   { path: "empresa", component: EmpresaComponent, children: [
+    { path: 'cuenta', component: CuentaComponent },
     { path: "", component: EDashboardComponent, children: [
       { path: 'tutorial', component: TutorialComponent, children:[
         { path: '', component: InicioTutorialComponent },
@@ -88,7 +91,8 @@ const routes: Routes = [
     ] },
     
     { path: 'editar/:id', component: EditarEmpresaComponent },
-    { path: 'verubicacion/:idEmpresa', component: VerUbicacionComponent},
+    {path: 'verubicacion/:idEmpresa', component: VerUbicacionComponent},
+    {path: 'clientes', component: TusClientesComponent},
     
     { path: "crear-oferta/:idEmpresa", component: CrearOfertaComponent },
     { path: "previo", component: PrevioComponent },
@@ -99,10 +103,9 @@ const routes: Routes = [
     { path: 'code-result/:code', component: QrcodeResultComponent },
     
     { path: "planes", component: PlanesComponent },
-    { path: 'cuenta', component: CuentaComponent },
     { path: "pasarela", component: PasarelaComponent, children: [
-        // { path: 'formadepago', component: FormadepagoComponent},
-        { path: "formadepago/:id", component: FormadepagoComponent },
+      // { path: 'formadepago', component: FormadepagoComponent},
+      { path: "formadepago/:id", component: FormadepagoComponent },
         { path: "regtarjeta", component: RegTarjetaComponent },
         { path: "ticket/:id", component: TicketComponent }
       ]},

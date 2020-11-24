@@ -1,0 +1,33 @@
+<div id="clientes-list" class="container">
+    <app-backbar></app-backbar>
+    <div class="row">
+        <div class="col s12 center">
+            <h4>Tus clientes</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <mat-card>
+                <mat-card-content>
+                    <ul class="collection bordered">
+                        <li class="collection-item avatar" *ngFor="let cliente of clientes">
+                            <img src="images/yuna.jpg" alt="avatar" class="circle">
+                            <span class="title">{{cliente.nombre}}</span>
+                            <p>{{cliente.email}}<br>
+                               Cliente desde: {{cliente.date.toLocaleDateString()}}
+                            </p>
+                            <a href="#!" class="secondary-content">
+                                <i class="far fa-star fa-lg deep-orange-text darken-3"></i>
+                            </a>
+                          </li>
+                    </ul>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 right">
+            <a (click)="download()" class="right">Descargar lista</a>
+        </div>
+    </div>
+</div>

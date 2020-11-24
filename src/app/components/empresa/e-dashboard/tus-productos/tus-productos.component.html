@@ -1,0 +1,28 @@
+<div class="tusProductos dashcard center" id="tusProductos">
+    <div class="row noMargin">
+        <div class="col s9">
+            <h4 class="title titleCard left-align">Tus productos</h4>
+        </div>
+    </div>
+    <div class="container prodcutosGrid">
+        <div class="nprodcutos center" *ngIf="productos.length < 1">
+            <h5 class="center">Aun no tienes prodcutos</h5>
+            <img src="../../../../../assets/img/oficons/Iso gris.svg" alt="" />
+        </div>
+
+        <div class="row">
+            <div class="col s12 ofer">
+                <div class="collection">
+                    <a *ngFor="let prod of productos" href="" class="collection-item">
+                        {{prod.referencia}}
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mensajeVacio" *ngIf="productos.length < 1">
+        <p>Crea una producto para promocionar</p>
+        <p>Presiona el botón de <i class="fas fa-pallet" aria-hidden="true"></i> en el menú flotante</p>
+    </div>
+</div>

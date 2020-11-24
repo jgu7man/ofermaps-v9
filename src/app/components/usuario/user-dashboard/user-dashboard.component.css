@@ -1,7 +1,5 @@
 .content {
-    position: relative;
-    top: -2em;
-    padding-bottom: 3em
+    min-height: 95vh;
 }
 
 #fotoPerfil {

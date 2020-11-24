@@ -1,4 +1,9 @@
 <app-backbar></app-backbar>
+<div class="edit-btn">
+    <button mat-fab color="accent" [routerLink]="['/registro/ubicacion', idEmpresa]">
+        <i class="fas fa-edit fa-lg"></i> 
+    </button>
+</div>
 <agm-map [gestureHandling]="'greedy'" [latitude]="lat" [longitude]="long" [zoom]="15" [streetViewControl]="false" [zoomControl]="false" [clickableIcons]="false">
     <agm-marker [latitude]="lat" [longitude]="long" [iconUrl]="iconMap.iconCurrent"></agm-marker>
 

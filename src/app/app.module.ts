@@ -23,6 +23,7 @@ import { FontPickerConfigInterface } from "ngx-font-picker";
 import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { ZXingScannerModule } from "@zxing/ngx-scanner";
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
+import { Angular2CsvModule } from 'angular2-csv';
 import 'hammerjs';
 import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 export class MyHammerConfig extends HammerGestureConfig  {
@@ -42,6 +43,9 @@ import { AgmCoreModule } from "@agm/core";
 const DEFAULT_FONT_PICKER_CONFIG: FontPickerConfigInterface = {
   apiKey: "AIzaSyAkjYOLC5pOkozcStdWfDDDJJ8vtrlDhI8"
 };
+
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { MaterialModule } from './material.module';
 // import {  } from "@types/googlemaps";
 
 import { PlanesServicio } from "./services/planes.service";
@@ -138,7 +142,10 @@ import { StepComponent } from './components/tutorial/step/step.component';
 import { EmpresaTutorialComponent } from './components/tutorial/empresa-tutorial/empresa-tutorial.component';
 import { PopEmailComponent } from './components/oferta/pop-email/pop-email.component';
 import { DirectionMapComponent } from './components/usuario/direction-map/direction-map.component';
-import { ServiceWorkerModule } from '@angular/service-worker';
+import { DelOfertaComponent } from './components/empresa/oferta/del-oferta/del-oferta.component';
+import { TusProductosComponent } from './components/empresa/e-dashboard/tus-productos/tus-productos.component';
+import { TusClientesComponent } from './components/empresa/e-dashboard/tus-clientes/tus-clientes.component';
+
 
 @NgModule({
   declarations: [
@@ -226,7 +233,10 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     StepComponent,
     EmpresaTutorialComponent,
     PopEmailComponent,
-    DirectionMapComponent
+    DirectionMapComponent,
+    DelOfertaComponent,
+    TusProductosComponent,
+    TusClientesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({appId: 'ofermaps'}),
@@ -252,7 +262,9 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     }),
     ZXingScannerModule,
     RoundProgressModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    MaterialModule,
+    Angular2CsvModule
   ],
   providers: [
     appRountingProviders,
@@ -269,6 +281,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
     useClass: MyHammerConfig,
     }
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [DelOfertaComponent]
 })
 export class AppModule {}

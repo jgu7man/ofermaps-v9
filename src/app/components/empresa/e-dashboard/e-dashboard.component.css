@@ -4,6 +4,12 @@
     padding-bottom: 3em;
 }
 
+.dashboard-content {
+    min-height: 98vh;
+    padding: 2em 0;
+    
+}
+
 .titleBar {
     position: fixed;
     background: #fff;
@@ -24,6 +30,7 @@
     background-size: cover !important;
     background-position: center !important;
     background-repeat: no-repeat !important;
+    background-color: #ffffff;
 }
 
 .editIcon {
@@ -51,9 +58,16 @@
     max-height: 275px;
 }
 
+#avatar {
+    position: relative;
+    z-index: 2;
+}
+
 #dataProfile {
     top: -3em;
     position: relative;
+    z-index: 1;
+    padding: 2em;
 }
 
 #dataProfile p {

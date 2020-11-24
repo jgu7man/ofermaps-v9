@@ -1,7 +1,12 @@
-.container {
-    padding-bottom: 6em
-}
-
 a {
     text-decoration: underline
+}
+
+#footer {
+    box-shadow: inset 0px 2px 4px rgba(0,0,0,0.5);
+    width: 100vw;
+    position: absolute;
+    left: 0;
+    padding: 2em 1em 5em;
+    background: #ebebeb;
 }

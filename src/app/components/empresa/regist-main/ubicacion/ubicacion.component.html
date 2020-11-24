@@ -74,7 +74,9 @@
             </div>
         </div>
 
+        
         <input type="submit" name="submit" id="registrarubi" value="GUARDAR" class="boton btn-primary" [disabled]="!ubi.form.valid" />
+        <p class="boton" *ngIf="idEmpresa" (click)="location_.back()">Cancelar</p>
     </form>
 </div>
 <app-loading class="overlay" style="display: none"></app-loading>

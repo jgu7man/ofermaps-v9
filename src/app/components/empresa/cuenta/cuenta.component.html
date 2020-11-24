@@ -1,10 +1,10 @@
-<div class="contenedor">
+<div class="contenedor container" id="cuenta-content">
     <h4 class="center titleBar">CUENTA</h4>
-    <div class="dashcard container" id="planInfo">
+    <div class="dashcard" id="planInfo">
         <div class="row">
             <div class="col s12 center">
                 <h5 class="">Plan {{plan.nombre}} </h5>
-                <p>Fecha de vencimiento: <br> {{vence}}</p>
+                <p *ngIf="vence">Fecha de vencimiento: <br> {{vence}}</p>
             </div>
         </div>
         <div class="row">

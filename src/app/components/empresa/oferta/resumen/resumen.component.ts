@@ -3,6 +3,8 @@ import { OfertaModel } from '../../../../models/Oferta.Model';
 import { OfertasService } from '../../../../services/ofertas.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
+import {MatDialog} from '@angular/material/dialog';
+import { DelOfertaComponent } from '../del-oferta/del-oferta.component';
 
 @Component({
   selector: 'app-resumen',
@@ -21,7 +23,8 @@ export class ResumenComponent implements OnInit {
     private _ofertas: OfertasService,
     private ruta: ActivatedRoute,
     private router: Router,
-    private fs: AngularFirestore
+    private fs: AngularFirestore,
+    private _dialog: MatDialog
   ) {
     this.oferta = new OfertaModel('','','','','','','',[],new Date, new Date, [], 0,0,0, '', false)
    }
@@ -73,6 +76,13 @@ export class ResumenComponent implements OnInit {
   setVisible(e) {
     this.fs.collection('ofertas').ref.doc(this.idOferta).update({
       visible: e.target.checked
+    })
+  }
+
+  eliminar() {
+    this._dialog.open(DelOfertaComponent, {
+      minWidth: '50%',
+      data: this.oferta.idOferta
     })
   }
 

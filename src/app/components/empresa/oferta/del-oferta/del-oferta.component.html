@@ -1,0 +1,11 @@
+<p>¿Deseas eliminar esta oferta?</p>
+<mat-dialog-actions
+style="display: flex; justify-content: space-around;">
+    <button mat-raised-button
+    (click)="dialog_.close()"
+    >Cancelar</button>
+    <button mat-raised-button
+    (click)="ofertas_.deleteOferta(ofertaId)"
+    (click)="dialog_.close()"
+    >Aceptar</button>
+</mat-dialog-actions>

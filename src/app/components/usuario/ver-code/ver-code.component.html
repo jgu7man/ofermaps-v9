@@ -28,9 +28,9 @@
         <div class="col s6">
             <ul>
                 <li>
-                    <span *ngIf="oferta.oTipo.includes('Bono')">$</span> {{ oferta.oCantidad }}
-                    <span *ngIf="oferta.oTipo.includes('Descuento')">%</span>
-                    <span *ngIf="oferta.oTipo.includes('Equivalencia')">X</span> {{ oferta.oCantAux }} {{ oferta.oProdserv }}
+                    <span *ngIf="oferta.oTipo.includes('bono')">$</span> {{ oferta.oCantidad }}
+                    <span *ngIf="oferta.oTipo.includes('descuento')">%</span>
+                    <span *ngIf="oferta.oTipo.includes('equivalencia')">X</span> {{ oferta.oCantAux }} {{ oferta.oProdserv }}
                 </li>
                 <li><b>VENCE:</b> {{ oferta.oCaducidad.toLocaleDateString() }}</li>
             </ul>

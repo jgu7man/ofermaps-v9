@@ -1,7 +1,7 @@
 .eNavbar {
     position: fixed;
-    top: -1em;
-    height: 10vh;
+    top: 0em;
+    height: 5vh;
     z-index: 12;
     background: #fff;
     width: 100vw !important;

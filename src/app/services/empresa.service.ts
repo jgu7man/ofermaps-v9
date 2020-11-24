@@ -144,7 +144,7 @@ export class EmpresaService {
   }
 
 
-  async getEmpresa(idEmpresa: string) {
+  async getEmpresa(idEmpresa: string): Promise<EmpresaModel> {
     await this.fs.collection('empresas').ref
       .doc(idEmpresa).get().then(doc => {
         if (doc.exists) {
