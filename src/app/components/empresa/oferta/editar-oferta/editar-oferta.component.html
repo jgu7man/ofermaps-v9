@@ -122,8 +122,8 @@
 
             <!-- CONDICIONES DE OFERTAS -->
             <div class="row">
-                <label for="oCondiciones">Define las condiciones de la oferta. </label>
-                <input type="text" class="ofinput" placeholder="Agrega condiciones" name="condicion" [(ngModel)]="condicion" (keyup.enter)="agregarCondicion()">
+                <label for="oCondiciones">Define las condiciones de la oferta. Agrega con coma (,).</label>
+                <input type="text" class="ofinput" placeholder="Agrega condiciones" name="condicion" [(ngModel)]="condicion" (keyup.comma)="agregarCondicion()">
                 <ul class="col s12 conds-input" data-name="conds-input">
                     <li class="cond" *ngFor="let item of oferta.oCondiciones, index as i">
                         {{item}}
@@ -138,8 +138,8 @@
 
             <div class="row">
                 <input type="hidden" name="keywords[]" class="ofinput" id="keywords" required #keywords="ngModel" [(ngModel)]="oferta.keywords" *ngFor="let keyword of oferta.keywords; let i = index" />
-                <label for="keywords">Escribe palabras claves que ayudarán a tus clientes a encontrarte más fácilmente. <b>Entre más palabras claves agregues, mejor</b> </label>
-                <input type="text" class="ofinput" placeholder="Agrega palabras clave" name="condicion" [(ngModel)]="keyword" (keyup.enter)="agregarKeyword()">
+                <label for="keywords">Escribe palabras claves que ayudarán a tus clientes a encontrarte más fácilmente. <b>Entre más palabras claves agregues, mejor</b>. Agrega con coma (,) </label>
+                <input type="text" class="ofinput" placeholder="Agrega palabras clave" name="condicion" [(ngModel)]="keyword" (keyup.comma)="agregarKeyword()">
                 <ul class="col s12 conds-input" data-name="conds-input">
                     <li class="cond" *ngFor="let item of oferta.keywords, index as i">
                         {{item}}
@@ -173,12 +173,10 @@
             <!-- IMAGEN DE OFERTA -->
             <div class="row">
                 <h5 class="center">Imagen de oferta</h5>
-                <div class="col s6">
-                    <p class="boton btn-secondary" (click)="ofertaPendiente()" style="width: 10em; float: left;">Diseñar</p>
-                </div>
-                <div class="col s6 file-field input-field">
+                <div class="col s12 file-field input-field" >
                     <div class="">
-                        <span class="boton btn-secondary upfile" style="float: right; left: 75% !important"> Cargar</span>
+                        <span class="boton btn-secondary upfile" style="max-width: 200px;
+                        left: 50% !important;"> Cargar</span>
                         <input type="file" name="oImagen" id="oImagen" (change)=cargarImg($event) />
                     </div>
                 </div>

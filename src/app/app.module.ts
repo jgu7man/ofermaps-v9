@@ -24,13 +24,9 @@ import { NgxQRCodeModule } from 'ngx-qrcode2';
 import { ZXingScannerModule } from "@zxing/ngx-scanner";
 import {RoundProgressModule} from 'angular-svg-round-progressbar';
 import { Angular2CsvModule } from 'angular2-csv';
-import 'hammerjs';
-import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
-export class MyHammerConfig extends HammerGestureConfig  {
-  overrides = <any>{
-      'swipe': {velocity: 0.4, threshold: 20} // override default settings
-  }
-}
+// import 'hammerjs';
+// import { HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
+
 
 // Google
 // import { LoginModule } from "./log/login/login.module";
@@ -276,10 +272,7 @@ import { TusClientesComponent } from './components/empresa/e-dashboard/tus-clien
       
       useValue: DEFAULT_FONT_PICKER_CONFIG
     },
-    {
-    provide: HAMMER_GESTURE_CONFIG,
-    useClass: MyHammerConfig,
-    }
+    
   ],
   bootstrap: [AppComponent],
   entryComponents: [DelOfertaComponent]

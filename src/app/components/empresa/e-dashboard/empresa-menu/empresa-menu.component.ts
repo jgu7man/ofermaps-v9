@@ -37,7 +37,6 @@ export class EmpresaMenuComponent implements OnInit {
         this.plan = 4
         break;
     }
-    console.log(this.plan);
   }
 
 }

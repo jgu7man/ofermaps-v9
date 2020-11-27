@@ -21,7 +21,6 @@ export class CuentaComponent implements OnInit {
     var user = JSON.parse(localStorage.getItem('omlog'))
     this.fs.collection('empresas').ref.doc(user.m)
       .collection('plan').doc('actual').get().then(doc => {
-        console.log(doc.data());
         this.plan = doc.data() as PlanModel
         if (doc.data()['vence']) {
           this.vence = doc.data().vence.toDate().toLocaleDateString()

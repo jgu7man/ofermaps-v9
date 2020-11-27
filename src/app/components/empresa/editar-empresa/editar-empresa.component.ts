@@ -3,6 +3,7 @@ import { EmpresaModel } from '../../../models/Empresa.Model';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { EmpresaService } from '../../../services/empresa.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-editar-empresa',
@@ -24,8 +25,9 @@ export class EditarEmpresaComponent implements OnInit {
   constructor(
     private ruta: ActivatedRoute,
     private fs: AngularFirestore,
-    private _empresa: EmpresaService,
-    private _router: Router
+    private _router: Router,
+    private _location: Location,
+    public empresa_: EmpresaService,
   ) {
     this.empresa = new EmpresaModel('','','','','','','','','',[])
    }
@@ -72,10 +74,12 @@ export class EditarEmpresaComponent implements OnInit {
     this.empresa.keywords.splice(i)
   }
 
-  onUpdate() {
+  async onUpdate() {
     $("app-loading").toggle()
-    this._empresa.updateEmpresa(this.empresa, this.imagenCargada);
-    this._router.navigate(['/empresa/Dashboard'])
+    console.log(this.empresa);
+    console.log(this.imagenCargada);
+    await this.empresa_.updateEmpresa(this.empresa, this.imagenCargada);
+    this._location.back()
     this.fs.collection('empCategorias').ref.doc('otros').set({
       keywords: [this.empresa.nCategoria]
     }, {merge: true})

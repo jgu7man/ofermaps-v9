@@ -2,6 +2,11 @@
     padding-bottom: 5em
 }
 
+.ofer-details {
+    border-radius: 1em;
+    padding: 1em;
+}
+
 .imgPreview {
     width: 100%;
     overflow: hidden;

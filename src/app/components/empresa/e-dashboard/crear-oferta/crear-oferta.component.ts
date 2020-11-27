@@ -3,6 +3,9 @@ import { OfertaModel } from "../../../../models/Oferta.Model";
 import { OfertasService } from '../../../../services/ofertas.service';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Plan } from '../../../../services/planes.service';
+import { Location } from '@angular/common';
+import { AlertaService } from '../../../../services/alertas.service';
 
 @Component({
   selector: "app-crear-oferta",
@@ -33,7 +36,9 @@ export class CrearOfertaComponent implements OnInit {
     private _oferta: OfertasService,
     private fs: AngularFirestore,
     private ruta: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private _location: Location,
+    private _alert: AlertaService
   ) {
     this.oferta = new OfertaModel("",'', "", "", "", "", "",[],new Date, new Date, [], 0,0,0, "", false);
     this.condiciones = ["EJEMPLO: aplican restrincciones"];
@@ -44,6 +49,7 @@ export class CrearOfertaComponent implements OnInit {
 
 
   async ngOnInit() {
+    this.validatePlan()
     this.oferta.idEmpresa = this.idEmprsa
     var pend = JSON.parse(sessionStorage.getItem('pend'))
     
@@ -74,6 +80,13 @@ export class CrearOfertaComponent implements OnInit {
     //   closeOnSelect: false // Close upon selecting a date,
     //   container: undefined, // ex. 'body' will append picker to body
     // });
+  }
+
+  async validatePlan() {
+    var planDoc = await this.fs.doc(`empresas/${this.idEmprsa}/plan/actual`).ref.get()
+    var plan = planDoc.data() as Plan
+    if (plan.publicaciones == 0)
+      this._alert.sendAlerta('No tienes más publicaciones disponibles, esta publicación la podrás crear pero no estará disponble en el mapa de ofertas')
   }
 
   ofertaPendiente() {

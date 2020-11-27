@@ -21,9 +21,8 @@
 
             <!-- IMAGEN DE PERFIL -->
             <div class="row">
-                <div class="col s4 colLeft" id="profilePreview" 
-                [style.backgroundImage]="'url('+empresa.nAvatar+')'">
-                    <!-- <img id="avatarPreview" [src]="empresa.nAvatar" alt="" /> -->
+                <div class="col s4 colLeft" id="profilePreview" >
+                    <img id="avatarPreview" [src]="empresa.nAvatar" alt="" />
                 </div>
                 <div class="col s7 colRight">
                     <label for="nAvatar">Agrega una foto de perfil</label>
@@ -31,6 +30,9 @@
                         <span class="boton btn-secondary upfile ">Subir Archivo</span>
                         <input type="file" name="nAvatar" id="nAvatar" (change)="cargarImagen($event)" />
                     </div>
+                </div>
+                <div class="" *ngIf="empresa_.setPorcentaje | async">
+                    cargando: {{empresa_.setPorcentaje | async}}
                 </div>
             </div>
 

@@ -15,9 +15,9 @@ export class AlertaComponent implements OnInit {
   public mensaje = "Error desconocido"
 
   ngOnInit() {
-    this._alerta.setAlerta.subscribe(res => {
-      if (res) {
-        this.mensaje = res.message
+    this._alerta.setAlerta.subscribe(message => {
+      if (message) {
+        this.mensaje = message
         $("app-alerta").fadeToggle()
       }
     })

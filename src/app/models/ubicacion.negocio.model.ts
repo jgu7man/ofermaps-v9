@@ -1,7 +1,7 @@
 export class UbicacionNegocioModel {
 
     constructor(
-        public idNegocio: string,
+        public idEmpresa: string,
         public nombre: string,
         public lat: string,
         public long: string,

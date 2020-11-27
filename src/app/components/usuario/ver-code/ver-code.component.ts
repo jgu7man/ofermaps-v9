@@ -45,4 +45,9 @@ export class VerCodeComponent implements OnInit {
     
   }
 
+
+  deleteCode() {
+    this._ofertas.deleteCode(this.code)
+  }
+
 }

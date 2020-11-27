@@ -120,5 +120,8 @@ export interface Plan {
   nombre: string,
   precio: string,
   periodo: string,
-  beneficios: []
+  beneficios: [],
+  codigos: number,
+  vistas: number,
+  publicaciones: number
 }

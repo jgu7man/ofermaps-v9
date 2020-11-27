@@ -6,7 +6,10 @@ import { Router } from '@angular/router';
 import { FirebaseApp } from '@angular/fire';
 import { FirebaseFirestore } from '@firebase/firestore-types';
 import { finalize } from 'rxjs/operators';
-import { Location } from '@angular/common';
+import {Location} from '@angular/common';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+
 
 @Injectable({
     providedIn: 'root'
@@ -24,13 +27,13 @@ export class OfertasService {
         private fs: AngularFirestore,
         private storage: AngularFireStorage,
         private router: Router,
-        private location: Location
+        private location: Location,
     ){
 
     }
 
     async postOferta(oferta: OfertaModel, file){
-        oferta.oCodes = 0
+        
         oferta.oProdserv = oferta.oProdserv.toLowerCase()
         if (file) {
 
@@ -61,6 +64,8 @@ export class OfertasService {
             sessionStorage.setItem('pend', JSON.stringify(oferta))
             
         }
+
+        return 
         
     }
 
@@ -103,7 +108,7 @@ export class OfertasService {
         })
     }
 
-    async updateOferta(idOferta: string, oferta: OfertaModel, file: any) {
+    async updateOferta(oferta: OfertaModel) {
         var fileId = new Date().getTime();
 
         await oferta.keywords.forEach(word => {
@@ -117,18 +122,18 @@ export class OfertasService {
         })
 
         oferta.oProdserv = oferta.oProdserv.toLocaleLowerCase()
-        if (file) {
-            await this.storage.ref('ofertasImg/' + fileId + file.name).put(file)
-                .then(snap => {
-                    snap.ref.getDownloadURL().then(url => {
-                return oferta.oImagen = url
-                })
-            })
-        }
-        this.fs.collection('ofertas').ref.doc(idOferta)
-            .update(oferta).then(res => {
+        Object.keys(oferta).forEach(key => {if (oferta[key] == undefined) delete oferta[key]})
+        console.log(oferta);
+
+        this.fs.collection('ofertas').ref.doc(oferta.idOferta)
+            .update({...oferta}).then(res => {
                 $("app-loading").toggle()
                 sessionStorage.removeItem('pend')
+                this.fs.doc(`empresas/${oferta.idEmpresa}/plan/actual`).ref
+                    .update({
+                        publicaciones: firebase.firestore.FieldValue.increment(-1),
+                        codigos: firebase.firestore.FieldValue.increment(-oferta.oLimite)
+                })
                 this.router.navigate(['/empresa/Dashboard'])
         })
     }
@@ -313,6 +318,12 @@ export class OfertasService {
     async deleteOferta(idOferta) {
         const oferta = this.fs.collection('ofertas').ref.doc(idOferta)
         await oferta.delete()
+        this.location.back()
+    }
+
+    async deleteCode(code: string) {
+        const codeRef = this.fs.collection('codes').ref.doc(code)
+        await codeRef.delete()
         this.location.back()
     }
 

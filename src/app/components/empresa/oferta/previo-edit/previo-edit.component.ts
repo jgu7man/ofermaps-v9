@@ -23,9 +23,10 @@ export class PrevioEditComponent implements OnInit {
     if (pend){
       this.oferta = pend
       this.caducidad = new Date(this.oferta.oCaducidad)
-      this.reg = new Date(this.oferta.oPublicado)
+      this.reg = new Date(this.oferta.oPublicado['seconds'] * 1000)
+      console.log(this.reg);
     } else {
-      this.router.navigate(['/empresa/Dashboard'])
+      this.router.navigate(['/empresa'])
     }
   }
 
@@ -33,7 +34,7 @@ export class PrevioEditComponent implements OnInit {
     $("app-loading").fadeToggle()
     this.oferta.oCaducidad = this.caducidad
     this.oferta.oPublicado = this.reg
-    // this._ofertas.updateOferta(this.oferta)
+    this._ofertas.updateOferta(this.oferta)
   }
 
 }

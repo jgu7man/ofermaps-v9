@@ -36,7 +36,7 @@
             <!-- KEYWORDS -->
 
             <div class="row">
-                <label for="keywords">Escribe palabras claves que ayudarán a tus clientes a encontrarte más fácilmente. <b>Entre más palabras claves agregues, mejor</b> </label>
+                <label for="keywords">Escribe palabras claves que ayudarán a tus clientes a encontrarte más fácilmente. <b>Entre más palabras claves agregues, mejor</b>. Después de escribir cada palabra clave presiona ENTER </label>
                 <input type="text" class="ofinput" placeholder="Agrega palabras clave" name="condicion" [(ngModel)]="keyword" (keyup.enter)="addKeyword()">
                 <ul class="col s12 conds-input" data-name="conds-input">
                     <li class="cond" *ngFor="let item of empresa.keywords, index as i">
@@ -68,7 +68,7 @@
                         </li>
                         <li class=item-drop (click)="open = 'list-drop-close'" (click)="toggle($event)">Otro</li>
                     </ul>
-                    <input class="input-drop" type="hidden" name="nCategoria" #otra="ngModel" [(ngModel)]="otraCategoria" id="nCategoria" value="" touched required />
+                    <input class="input-drop" type="hidden" name="nCategoria" #otra="ngModel" [(ngModel)]="otraCategoria" id="nCategoria" value="" touched />
                     <!-- <span class="alertForm" *ngIf="otra.invalid && (otra.dirty || otra.touched)">
                       Escribe la categoria de tu negocio
                     </span> -->

@@ -5,6 +5,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AngularFirestore } from '@angular/fire/firestore';
 import {MatDialog} from '@angular/material/dialog';
 import { DelOfertaComponent } from '../del-oferta/del-oferta.component';
+import {Plan} from '../../../../services/planes.service';
+import * as firebase from 'firebase/app';
+import 'firebase/firestore';
+import { AlertaService } from '../../../../services/alertas.service';
 
 @Component({
   selector: 'app-resumen',
@@ -24,7 +28,8 @@ export class ResumenComponent implements OnInit {
     private ruta: ActivatedRoute,
     private router: Router,
     private fs: AngularFirestore,
-    private _dialog: MatDialog
+    private _dialog: MatDialog,
+    private _alert: AlertaService
   ) {
     this.oferta = new OfertaModel('','','','','','','',[],new Date, new Date, [], 0,0,0, '', false)
    }
@@ -73,10 +78,21 @@ export class ResumenComponent implements OnInit {
     this.router.navigate(['/empresa/edit-of'])
   }
 
-  setVisible(e) {
-    this.fs.collection('ofertas').ref.doc(this.idOferta).update({
-      visible: e.target.checked
-    })
+  async setVisible(e) {
+    var planRef = this.fs.doc(`empresas/${this.oferta.idEmpresa}/plan/actual`).ref
+    var oferRef = this.fs.collection('ofertas').ref.doc(this.idOferta)
+    var plan: Plan = (await planRef.get()).data() as Plan
+    if (e.target.checked) {
+      if (plan.publicaciones == 0) {
+        this._alert.sendAlerta('No tienes permiso de publicar otra oferta')
+      } else {
+        planRef.update({publicaciones: firebase.firestore.FieldValue.increment(-1)})
+        oferRef.update({ visible: true })
+      }
+    } else {
+      planRef.update({publicaciones: firebase.firestore.FieldValue.increment(1)})
+        oferRef.update({ visible: false })
+    }
   }
 
   eliminar() {

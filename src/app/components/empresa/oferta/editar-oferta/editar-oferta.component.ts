@@ -106,9 +106,8 @@ export class EditarOfertaComponent implements OnInit {
   
   onEdit() {
     $("app-loading").fadeToggle()
-    this._oferta.postOferta(this.oferta, this.img).then(res => {
-      this.router.navigate(['empresa/previo-edit'])
-    })
+    this._oferta.postOferta(this.oferta, this.img)
+      .then(() => { this.router.navigate(['empresa/previo-edit']) })
   }
 
 }

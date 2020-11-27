@@ -109,17 +109,11 @@ export class EmpresaService {
 
 
   async updateEmpresa(empresa: EmpresaModel, file: any) {
-    await this.fs.collection("empresas").ref.doc(empresa.idEmpresa).set({
-      idUsuario: empresa.idUsuario,
-      nNegocio: empresa.nNegocio.toLowerCase(),
-      nCategoria: empresa.nCategoria,
-      nTelefono: empresa.nTelefono,
-      nCorreo: empresa.nCorreo.toLowerCase(),
-      nWebsite: empresa.nWebsite.toLowerCase(),
-      keywords: empresa.keywords,
-      planActual: 'gratis',
-      actualizacion: new Date
-    }, { merge: true })
+    empresa.nNegocio = empresa.nNegocio.toLowerCase()
+    empresa['actualizacion'] = new Date()
+    Object.keys(empresa).forEach(key => {if (empresa[key] == undefined) delete empresa[key]})
+    
+    await this.fs.collection("empresas").ref.doc(empresa.idEmpresa).update({...empresa})
     
     var id = new Date().getTime();
     const name = id + file.name
@@ -135,12 +129,14 @@ export class EmpresaService {
             finalize(() => {
                 ref.getDownloadURL().subscribe(res => {
                   this.eAvatar = res;
-                  this.fs.collection("empresas").doc(this.idEmpresa).update({
+                  this.fs.collection("empresas").doc(empresa.idEmpresa).update({
                     nAvatar: this.eAvatar
                   })
               })
             })
-        ).subscribe()
+    ).subscribe()
+    
+    return
   }
 
 

@@ -2,7 +2,7 @@
 <div id="vistaCode" class="container content">
     <div class="row" id="code">
         <div class="col s12 center">
-            <h5>{{ oferta.oNombre }}</h5>
+            <h2>{{ oferta.oNombre }}</h2>
         </div>
         <div class="col s12 m3 center">
             <div class="code">
@@ -36,12 +36,13 @@
             </ul>
         </div>
         <div class="col s12">
-            <h6>Condiciones</h6>
+            <h3>Condiciones</h3>
             <ul>
                 <li *ngFor="let condicion of oferta.oCondiciones">{{ condicion }}</li>
             </ul>
         </div>
     </div>
+    <button mat-raised-button color="accent" (click)="deleteCode()">Eliminar código</button>
 </div>
 <app-navbar></app-navbar>
 <app-loading class="overlay"></app-loading>
